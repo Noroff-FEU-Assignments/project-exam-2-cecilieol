@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { saveToken } from "../auth/token";
 import { rememberUser } from "../auth/user";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const schema = yup.object().shape({
     email: yup
@@ -17,7 +18,7 @@ const schema = yup.object().shape({
         .required("Please enter a password"),
 });
 
-export default function LoginForm(email, password) {
+export default function LoginForm() {
 
     let navigate = useNavigate(); 
     
@@ -29,36 +30,28 @@ export default function LoginForm(email, password) {
         resolver: yupResolver(schema)
     });
 
-    const credentials = JSON.stringify({ 
-        identifier: email, 
-        password: password 
-    });
+    function onSubmit(data) {
 
-    async function onSubmit() {
+        axios
+        .post('http://localhost:1337/api/auth/local', {
+            identifier: data.email, 
+            password: data.password 
+        })
 
-        try {
-            const response = await fetch('http://localhost:1337/auth/local', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: credentials,
-            })
+        .then(response => {
+            console.log('Well done!');
+            console.log('User profile', response.data.user);
+            console.log('User token', response.data.jwt);
 
-            const login = await response.json();
+            saveToken(response.data.jwt);
+            rememberUser(response.data.user);
+            navigate("/");
 
-            if (login.user) {
-                saveToken(login.jwt);
-                rememberUser(login.user);
-    
-                navigate("/")
-            } else {
-                navigate("/login");
-            }
-            
-        } catch (error) {
-            console.log(error);
-        }
+        })
+        .catch(error => { 
+            console.log('An error occurred:', error.response);
+        });
+
     }
 
     return( 
