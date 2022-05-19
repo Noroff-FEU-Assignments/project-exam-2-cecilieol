@@ -99,9 +99,7 @@ export default function ViewPage() {
 
 			<Subheading title="Facilities" />
 				<ul className="facilities">
-					<li>{page.data.attributes.facilities.first}</li>
-					<li>{page.data.attributes.facilities.second}</li>
-					<li>{page.data.attributes.facilities.third}</li>
+					<li>{page.data.attributes.facilities}</li>
 				</ul>
 			<Subheading title="Location" />
 			<p>{page.data.attributes.address}</p>
