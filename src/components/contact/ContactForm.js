@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from 'axios';
 
 const schema = yup.object().shape({
     first_name: yup
@@ -38,21 +39,24 @@ export default function ContactForm() {
         resolver: yupResolver(schema)
     });
 
-    async function onSubmit(data) {
 
-            const contactMsg = await fetch('http://localhost:1337/api/messages', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    data
-                })
-            })
-            const response = await contactMsg.json();
-            console.log(response);
+    function onSubmit(data) {
 
+        axios
+        .post('http://localhost:1337/api/messages', {
+            data
+        })
+
+        .then(response => {
+            console.log('Well done!');
+            console.log('User profile', response.data);
+
+        })
+        .catch(error => { 
+            console.log('An error occurred:', error.response);
+        });
     }
+
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
