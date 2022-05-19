@@ -1,0 +1,35 @@
+.modal-dialog {
+
+        .modal-content {
+
+            border-radius: 25px;
+            background-color: $green-main;
+            padding: 0.5rem;
+
+            .modal-header {
+
+                background-color: $green-main;
+                color: $almost-white;
+                border: none;
+                border-bottom: 1px solid $almost-white;
+            }
+
+            .modal-body {
+
+                padding: 0;
+                border: none;
+            
+                form {
+                    max-width: 100%;
+                    border-radius: 0;
+                    box-shadow: none;
+                    padding: 1rem 1rem 0 1rem;
+                }
+            }
+
+            .modal-footer {
+                background-color: $green-main;
+                border: none;
+            }
+        }
+    }

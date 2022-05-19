@@ -1,0 +1,164 @@
+.hotel-card {
+
+    &.card {
+        border: none;
+        box-shadow:  0 3px 6px rgba(0, 0, 0, 0.2);
+        margin-bottom: 2rem;
+
+        .hotel-img {
+            object-fit: contain;
+            align-self: baseline;
+        }
+    
+        .hotel-body {
+
+            &.card-body {
+                padding: 1rem 1rem 0.5rem 1rem;
+                line-height: 26px;
+            }
+    
+            .hotel-text {
+
+                &.description {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+
+                }
+
+                &.bold {
+                    font-weight: 600;
+                }
+    
+            }
+
+            .card-bottom {
+                display: flex;
+                justify-content: space-between;
+
+                .rating {
+
+                    margin-bottom: 0;
+                    
+                    .star {
+                        width: 18px;
+                        margin-right: 4px;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.enquiry-card,
+.message-card {
+
+    &.card {
+        max-width: 1000px;
+        margin: auto;
+        margin-bottom: 1rem;
+        border: 2px solid $green-main;
+        border-radius: 25px;
+        
+        .card-body {
+
+            .card-top {
+                border-bottom: 1px solid $green-main;
+                margin-bottom: 1rem;
+            }
+
+            .card-mid {
+    
+                .card-right {
+                    margin-top: 1rem;
+                }
+
+            }
+
+            .card-bottom {
+
+                button {
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+
+    .hotel-card {
+
+        &.card {
+            flex-direction: row;
+            margin-left: 1rem;
+
+            .hotel-img {
+                width: 25rem;
+            }
+
+            .hotel-body {
+                max-width: 28rem;
+
+                .hotel-title {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    .enquiry-card,
+    .message-card {
+
+        &.card {
+        
+            .card-body {
+
+                .card-top {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: baseline;
+                }
+
+                .card-mid {
+                    display: flex;
+    
+                    .card-left {
+                        width: 49%;
+                    }
+        
+                    .card-right {
+                        width: 49%;
+                        margin-top: 0;
+                    }
+    
+                }
+
+                .card-bottom {
+                    display: flex;
+                    justify-content: space-between;
+    
+                    button {
+                        width: 49%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1300px) {
+
+    .hotel-card {
+
+        &.card {
+            margin-left: 0;
+        }
+    }
+
+}

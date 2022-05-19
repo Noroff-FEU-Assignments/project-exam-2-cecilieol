@@ -1,0 +1,45 @@
+button {
+    color: $almost-white;
+    
+    &.primary {
+        background-color: $orange-main;
+        border: none;
+        border-radius: 25px;
+        width: 100%;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $orange-main-hover;
+        }
+    }
+
+    &.secondary {
+        background-color: $almost-white;
+        color: $green-main;
+        border: none;
+        border-radius: 25px;
+        width: 100%;
+        margin: 1rem 0;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $almost-white-hover;
+            color: $green-main;
+        }
+    }
+
+    &.danger {
+        background-color: $red-danger;
+        border: none;
+        border-radius: 25px;
+        width: 100%;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $red-danger-hover;
+        }
+    }
+}

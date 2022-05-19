@@ -1,0 +1,26 @@
+h1, h2, h3, h4, a {
+    font-family: $font-heading;
+    font-weight: 300;
+}
+
+p, label, li, button, span {
+    font-family: $font-text;
+}
+
+h1, 
+.h1 {
+    padding: 1rem 0;
+}
+
+a {
+    color: auto;
+    text-decoration: none;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.text-danger {
+    color: red;
+}

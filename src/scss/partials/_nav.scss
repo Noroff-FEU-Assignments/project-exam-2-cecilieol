@@ -1,0 +1,47 @@
+nav {
+    background-color: $green-main;
+}
+
+.navbar-light {
+
+    .logo {
+
+        img {
+            width: 200px;
+            margin: 10px;
+        }
+
+    }
+
+    .navbar-nav {
+
+        display: flex;
+
+        .nav-link {
+            color: $almost-white;
+            font-size: 20px;
+            margin: 0 20px;
+
+            &.active {
+                text-decoration: underline;
+            }
+
+            
+        }
+    }
+}
+
+@media (min-width: 992px) {
+
+    .navbar-light {
+    
+        .navbar-nav {
+    
+            .nav-link {
+                margin: 0 20px;
+    
+                
+            }
+        }
+    }
+}

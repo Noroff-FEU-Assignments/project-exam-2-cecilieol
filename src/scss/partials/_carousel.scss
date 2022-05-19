@@ -1,0 +1,10 @@
+.carousel {
+    margin: 1rem auto;
+}
+
+@media (min-width: 992px) {
+
+    .carousel {
+        width: 50%
+    }
+}
