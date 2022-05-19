@@ -1,5 +1,15 @@
 .carousel {
     margin: 1rem auto;
+
+    .carousel-inner {
+
+        .carousel-item {
+
+            .carousel-caption {
+                background-color: rgba($almost-white, 0.5);
+            }
+        }
+    }
 }
 
 @media (min-width: 992px) {
