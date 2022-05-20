@@ -39,7 +39,7 @@ export default function LoginForm() {
         })
 
         .then(response => {
-            console.log('Well done!');
+            console.log('You are logged in');
             console.log('User profile', response.data.user);
             console.log('User token', response.data.jwt);
 
