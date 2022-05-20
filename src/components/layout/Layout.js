@@ -24,7 +24,6 @@ export default function Layout() {
                 </NavLink>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-
                     <Nav>
                         <NavLink to="/hotels" exact className="nav-link">Browse</NavLink>
                         <NavLink to="/contact" exact className="nav-link">Contact</NavLink>
