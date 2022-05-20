@@ -4,13 +4,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { retrieveToken } from "../../auth/token";
+import axios from 'axios';
+import { useState } from "react";
 
 const schema = yup.object().shape({
     name: yup
         .string()
         .required("Please enter a name")
         .min(2, "Name must be at least 2 characters"),
-    category: yup
+    type: yup
         .string()
         .required("Please select a category"),
     price: yup
@@ -41,6 +43,8 @@ const schema = yup.object().shape({
 });
 
 export default function AddForm() {
+
+    const [submitted, setSubmitted] = useState(false);
     
     const {
         register,
@@ -52,24 +56,48 @@ export default function AddForm() {
 
     const token = retrieveToken();
 
-    async function onSubmit(data) {
+    async function onSubmit(data, e) {
 
-            const accommodation = await fetch('http://localhost:1337/api/hotels', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
+        await axios
+            .post('http://localhost:1337/api/hotels', {
+                data: {
+                    name: data.name,
+                    type: data.type,
+                    price: data.price,
+                    guests: data.guests,
+                    address: data.address,
+                    description: data.description,
+                    facilities: data.facilities,
+                    image_url_1: data.image_url_1,
+                    image_url_2: data.image_url_2,
+                    image_url_3: data.image_url_3,
+                    }
                 },
-                body: JSON.stringify({
-                    data
-                })
+                {
+                headers: {
+                    Authorization:
+                        `Bearer ${token}`,
+                    },
+                }
+            )
+      
+            .then(response => {
+                console.log('New accommodation', response.data);
+            
+                setSubmitted(true);
+                e.target.reset();
+
             })
-            const response = await accommodation.json();
-            console.log(response);
+            .catch(error => { 
+                console.log('An error occurred:', error.response);
+            });
 
     }
 
     return( 
+
+        <>
+        {submitted && <div className="success">New accommodation has been added</div>}
 
         <Form onSubmit={handleSubmit(onSubmit)}>
 
@@ -81,8 +109,8 @@ export default function AddForm() {
 
             <Form.Group className="mb-3" >
                 <Form.Label>Category</Form.Label>
-                <Form.Select aria-label="Select category" name="type" {...register("type")}>
-                    <option>Select type</option>
+                <Form.Select aria-label="Select type" name="type" {...register("type")}>
+                    <option value disabled>Select type</option>
                     <option value="hotel">Hotel</option>
                     <option value="hostel">Hostel</option>
                     <option value="apartment">Apartment</option>
@@ -140,7 +168,8 @@ export default function AddForm() {
                 {errors.image_url_3 && <span className="text-danger">{errors.image_url_3.message}</span>}
             </Form.Group>
 
-            <Button className="primary" type="submit">Add</Button>
+            <Button type="submit" className="primary">Add</Button>
         </Form>
+        </>
     )
 }
