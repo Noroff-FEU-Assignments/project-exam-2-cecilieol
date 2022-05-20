@@ -28,5 +28,5 @@ export function Location ({ google, locations = [] }) {
 };
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyCvKYeKtinjQDstme0E7le8MWq9GQpolz8'
+  apiKey: 'AIzaSyCkp7-23Exq39ru1YKVNKrjRNmpKe3PYbc'
 })(Location);
