@@ -1,6 +1,7 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
@@ -30,6 +31,8 @@ const schema = yup.object().shape({
 });
 
 export default function ContactForm() {
+
+    const [submitted, setSubmitted] = useState(false);
     
     const {
         register,
@@ -40,9 +43,9 @@ export default function ContactForm() {
     });
 
 
-    function onSubmit(data) {
+    async function onSubmit(data, e) {
 
-        axios
+        await axios
         .post('http://localhost:1337/api/messages', {
             data
         })
@@ -50,6 +53,9 @@ export default function ContactForm() {
         .then(response => {
             console.log('Well done!');
             console.log('User profile', response.data);
+
+            setSubmitted(true);
+            e.target.reset();
 
         })
         .catch(error => { 
@@ -59,6 +65,8 @@ export default function ContactForm() {
 
 
     return (
+        <>
+        {submitted && <div className="success">Your message has been sent</div>}
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3 form-inline inline-first" controlId="FirstNameInput">
                 <Form.Label>First Name</Form.Label>
@@ -87,5 +95,6 @@ export default function ContactForm() {
             </Form.Group>
             <Button type="submit" className="primary">Send</Button>
         </Form>
+        </>
     );
 }
