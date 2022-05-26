@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { retrieveToken } from "../../auth/token";
 import axios from 'axios';
 import { useState } from "react";
+import { api, hotelEndpoint } from "../../../constants/api";
 
 const schema = yup.object().shape({
     name: yup
@@ -26,10 +27,23 @@ const schema = yup.object().shape({
         .required("Please enter an address"),
     description: yup
         .string()
-        .required("Please enter a description"),
-    facilities: yup
+        .required("Please enter a description")
+        .min(200, "Description must exceed 200 characters"),
+    wifi: yup
         .string()
-        .required("Please enter some facilities"),
+        .required("Please select an option"),
+    breakfast_included: yup
+        .string()
+        .required("Please select an option"),
+    disability_friendly: yup
+        .string()
+        .required("Please select an option"),
+    pet_friendly: yup
+        .string()
+        .required("Please select an option"),
+    private_bathroom: yup
+        .string()
+        .required("Please select an option"),
     image_url_1: yup
         .string()
         .required("Please enter a URL"),
@@ -45,6 +59,7 @@ const schema = yup.object().shape({
 export default function AddForm() {
 
     const [submitted, setSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     
     const {
         register,
@@ -59,12 +74,17 @@ export default function AddForm() {
     async function onSubmit(data, e) {
 
         await axios
-            .post('http://localhost:1337/api/hotels', {
+            .post(api + hotelEndpoint, {
                 data: {
                     name: data.name,
                     type: data.type,
                     price: data.price,
                     guests: data.guests,
+                    wifi: data.wifi,
+                    breakfast_included: data.breakfast_included,
+                    disability_friendly: data.disability_friendly,
+                    pet_friendly: data.pet_friendly,
+                    private_bathroom: data.private_bathroom,
                     address: data.address,
                     description: data.description,
                     facilities: data.facilities,
@@ -72,7 +92,7 @@ export default function AddForm() {
                     image_url_2: data.image_url_2,
                     image_url_3: data.image_url_3,
                     }
-                },
+                }, 
                 {
                 headers: {
                     Authorization:
@@ -81,15 +101,14 @@ export default function AddForm() {
                 }
             )
       
-            .then(response => {
-                console.log('New accommodation', response.data);
-            
+            .then(response => {            
                 setSubmitted(true);
                 e.target.reset();
 
             })
             .catch(error => { 
-                console.log('An error occurred:', error.response);
+                console.log(error.response);
+                setErrorMessage(error.response.statusText);
             });
 
     }
@@ -97,20 +116,21 @@ export default function AddForm() {
     return( 
 
         <>
-        {submitted && <div className="success">New accommodation has been added</div>}
+        {submitted && <div className="success-container">New accommodation has been added</div>}
+        {errorMessage && <div className="error-container">{errorMessage}</div>}
 
         <Form onSubmit={handleSubmit(onSubmit)}>
 
-            <Form.Group className="mb-3" >
+            <Form.Group className="mb-3 form-inline inline-first" >
                 <Form.Label>Name</Form.Label>
-                <Form.Control type="text" name="name" placeholder="Accommodation name" {...register("name")}/>
+                <Form.Control type="text" name="name" placeholder="Name" {...register("name")}/>
                 {errors.name && <span className="text-danger">{errors.name.message}</span>}
             </Form.Group>
 
-            <Form.Group className="mb-3" >
+            <Form.Group className="mb-3 form-inline" >
                 <Form.Label>Category</Form.Label>
                 <Form.Select aria-label="Select type" name="type" {...register("type")}>
-                    <option value disabled>Select type</option>
+                    <option disabled value hidden>Select type</option>
                     <option value="hotel">Hotel</option>
                     <option value="hostel">Hostel</option>
                     <option value="apartment">Apartment</option>
@@ -120,19 +140,69 @@ export default function AddForm() {
                 {errors.type && <span className="text-danger">{errors.type.message}</span>}
             </Form.Group>
 
-            <Form.Group className="mb-3" >
+            <Form.Group className="mb-3 form-inline inline-first" >
                 <Form.Label>Price per night</Form.Label>
                 <Form.Control type="number" name="price" placeholder="Price" {...register("price")}/>
                 {errors.price && <span className="text-danger">{errors.price.message}</span>}
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 form-inline">
                 <Form.Label>Max # of guests</Form.Label>
                 <Form.Control type="number" name="guests" placeholder="Guests" {...register("guests")}/>
                 {errors.guests && <span className="text-danger">{errors.guests.message}</span>}
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 form-inline inline-first" >
+                <Form.Label>Wi-Fi</Form.Label>
+                <Form.Select aria-label="Select option" name="wifi" {...register("wifi")}>
+                    <option disabled value hidden>Select option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </Form.Select> 
+                {errors.wifi && <span className="text-danger">{errors.wifi.message}</span>}
+            </Form.Group>
+
+            <Form.Group className="mb-3 form-inline" >
+                <Form.Label>Breakfast Included</Form.Label>
+                <Form.Select aria-label="Select option" name="breakfast_included" {...register("breakfast_included")}>
+                    <option disabled value hidden>Select option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </Form.Select> 
+                {errors.breakfast_included && <span className="text-danger">{errors.breakfast_included.message}</span>}
+            </Form.Group>
+
+            <Form.Group className="mb-3 form-inline inline-first" >
+                <Form.Label>Disability Friendly</Form.Label>
+                <Form.Select aria-label="Select option" name="disability_friendly" {...register("disability_friendly")}>
+                    <option disabled value hidden>Select option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </Form.Select> 
+                {errors.disability_friendly && <span className="text-danger">{errors.disability_friendly.message}</span>}
+            </Form.Group>
+
+            <Form.Group className="mb-3 form-inline" >
+                <Form.Label>Pet Friendly</Form.Label>
+                <Form.Select aria-label="Select option" name="pet_friendly" {...register("pet_friendly")}>
+                    <option disabled value hidden>Select option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </Form.Select> 
+                {errors.pet_friendly && <span className="text-danger">{errors.pet_friendly.message}</span>}
+            </Form.Group>
+
+            <Form.Group className="mb-3 form-inline inline-first" >
+                <Form.Label>Private Bathroom</Form.Label>
+                <Form.Select aria-label="Select option" name="private_bathroom" {...register("private_bathroom")}>
+                    <option disabled value hidden>Select option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </Form.Select> 
+                {errors.private_bathroom && <span className="text-danger">{errors.private_bathroom.message}</span>}
+            </Form.Group>
+
+            <Form.Group className="mb-3 form-inline">
                 <Form.Label>Address</Form.Label>
                 <Form.Control type="text" name="address" placeholder="Address" {...register("address")}/>
                 {errors.address && <span className="text-danger">{errors.address.message}</span>}
@@ -142,12 +212,6 @@ export default function AddForm() {
                 <Form.Label>Description</Form.Label>
                 <Form.Control as="textarea" rows={4} name="description" placeholder="Description" {...register("description")}/>
                 {errors.description && <span className="text-danger">{errors.description.message}</span>}
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-                <Form.Label>Facilities</Form.Label>
-                <Form.Control as="textarea" rows={4} name="facilities" placeholder="Facilities" {...register("facilities")}/>
-                {errors.facilities && <span className="text-danger">{errors.facilities.message}</span>}
             </Form.Group>
 
             <Form.Group className="mb-3">
