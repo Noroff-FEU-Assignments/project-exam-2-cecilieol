@@ -11,3 +11,7 @@ export function Subheading({ title }) {
 Heading.propTypes = {
     title: PropTypes.string,
 };
+
+Subheading.propTypes = {
+    title: PropTypes.string,
+};
