@@ -7,6 +7,9 @@ import { saveToken } from "../auth/token";
 import { rememberUser } from "../auth/user";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { api, authEndpoint } from "../../constants/api";
+import { useContext, useState } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
     email: yup
@@ -20,6 +23,8 @@ const schema = yup.object().shape({
 
 export default function LoginForm() {
 
+    const [loginError, setLoginError] = useState("");
+
     let navigate = useNavigate(); 
     
     const {
@@ -30,32 +35,34 @@ export default function LoginForm() {
         resolver: yupResolver(schema)
     });
 
+    const [auth, setAuth] = useContext(AuthContext);
+
     function onSubmit(data) {
 
         axios
-        .post('http://localhost:1337/api/auth/local', {
+        .post(api + authEndpoint, {
             identifier: data.email, 
             password: data.password 
         })
 
         .then(response => {
-            console.log('You are logged in');
-            console.log('User profile', response.data.user);
-            console.log('User token', response.data.jwt);
-
             saveToken(response.data.jwt);
             rememberUser(response.data.user);
+            setAuth(response.data);
             navigate("/");
 
         })
         .catch(error => { 
-            console.log('An error occurred:', error.response);
+            console.log(error.response);
+            setLoginError(error.response.statusText);
         });
 
     }
 
     return( 
 
+        <>
+        {loginError && <div className="error-container">{loginError}</div>}
         <Form onSubmit={handleSubmit(onSubmit)}>
 
             <Form.Group className="mb-3">
@@ -73,5 +80,6 @@ export default function LoginForm() {
             <Button type="submit" className="primary">Log in</Button>
 
         </Form>
+        </>
     )
 }
