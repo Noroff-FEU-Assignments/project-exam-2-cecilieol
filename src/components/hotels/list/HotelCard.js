@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import star from "../../../star.png";
+// import star from "../../../star.png";
 
-export default function HotelCard({ name, description, address, price, image }) {
+export default function HotelCard({ name, description, address, price, guests, image }) {
+
     return (
         <Col>
             <Card className="hotel-card">
@@ -13,13 +14,7 @@ export default function HotelCard({ name, description, address, price, image }) 
                     <Card.Text className="hotel-text description">{description}</Card.Text>
                     <Card.Text className="hotel-text">{address}</Card.Text>
                     <div className="card-bottom">
-                        <Card.Text className="rating">
-                            <Card.Img src={star} alt="rating1" className="star" />
-                            <Card.Img src={star} alt="rating2" className="star" />
-                            <Card.Img src={star} alt="rating3" className="star" />
-                            <Card.Img src={star} alt="rating4" className="star" />
-                            <Card.Img src={star} alt="rating5" className="star" />
-                        </Card.Text>
+                        <Card.Text className="guests"><i className="fa fa-user"></i> {guests}</Card.Text>
                         <Card.Text className="hotel-text bold">${price} / night</Card.Text>
                     </div>
                 </Card.Body>
@@ -31,7 +26,8 @@ export default function HotelCard({ name, description, address, price, image }) 
 HotelCard.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    guests: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired
 };
-
