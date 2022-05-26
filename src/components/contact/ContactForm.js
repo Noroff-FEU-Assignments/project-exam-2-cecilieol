@@ -5,6 +5,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
+import { api, messageEndpoint } from "../../constants/api";
 
 const schema = yup.object().shape({
     first_name: yup
@@ -33,7 +34,8 @@ const schema = yup.object().shape({
 export default function ContactForm() {
 
     const [submitted, setSubmitted] = useState(false);
-    
+    const [errorMessage, setErrorMessage] = useState("");
+
     const {
         register,
         handleSubmit,
@@ -46,27 +48,26 @@ export default function ContactForm() {
     async function onSubmit(data, e) {
 
         await axios
-        .post('http://localhost:1337/api/messages', {
+        .post(api + messageEndpoint, {
             data
         })
 
         .then(response => {
-            console.log('Well done!');
-            console.log('User profile', response.data);
-
             setSubmitted(true);
             e.target.reset();
 
         })
         .catch(error => { 
-            console.log('An error occurred:', error.response);
+            console.log(error.response);
+            setErrorMessage(error.response.statusText);
         });
     }
 
 
     return (
         <>
-        {submitted && <div className="success">Your message has been sent</div>}
+        {submitted && <div className="success-container">Your message has been sent</div>}
+        {errorMessage && <div className="error-container">{errorMessage}</div>}
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3 form-inline inline-first" controlId="FirstNameInput">
                 <Form.Label>First Name</Form.Label>
