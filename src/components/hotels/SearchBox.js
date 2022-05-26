@@ -1,16 +1,23 @@
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
+import Accordion from "react-bootstrap/Accordion";
 
 export default function SearchBox() {
+
     return (
         <>
-            <Form className="search-box">
+            <Accordion flush className="modified-accordion">
+                <Accordion.Item eventKey="0">
+                    <Accordion.Header>Search and filter results</Accordion.Header>
+                    <Accordion.Body className="collapse show">
+                    <Form className="search-box">
                 <Form.Group className="mb-3">
-                    <Form.Label>Name search</Form.Label>
+                    <Form.Label>Search</Form.Label>
                     <FormControl
-                        type="search"
-                        placeholder="Search"
+                        type="Search"
+                        placeholder="Search by name, location..."
                         className="me-2"
                         aria-label="Search"
                       />
@@ -25,14 +32,20 @@ export default function SearchBox() {
                     <Form.Control type="date" />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <Form.Label>Number of guests</Form.Label>
-                    <Form.Control type="number" />
+                <Form.Group>
+                    <Form.Label>Max number of guests</Form.Label>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Text><i className="fa fa-user"></i></InputGroup.Text>
+                        <FormControl type="number" />
+                    </InputGroup>
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <Form.Label>Price per night</Form.Label>
-                    <Form.Control type="range" />
+                <Form.Group>
+                    <Form.Label>Max price per night</Form.Label>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Text>$</InputGroup.Text>
+                        <FormControl type="number" />
+                    </InputGroup>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -46,6 +59,9 @@ export default function SearchBox() {
 
                 <Button className="primary" type="submit">Search</Button>
             </Form>
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
         </>
     )
 }
