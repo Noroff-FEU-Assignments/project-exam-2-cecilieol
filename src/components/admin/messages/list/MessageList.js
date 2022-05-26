@@ -1,17 +1,27 @@
 import { useState, useEffect } from "react";
-import { message_api } from "../../../../constants/api";
+import { api, messageEndpoint } from "../../../../constants/api";
 import MessageCard from "./MessageCard";
 import Loader from "../../../layout/Loader";
+import { retrieveToken } from "../../../auth/token";
 
 export default function MessageList() {
     const [messages, setMessages] = useState([]);
     const [loader, setLoader] = useState(true);
     const [error, setError] = useState(null);
 
+
     useEffect(function() {
+
+        const token = retrieveToken();
+
         async function getMessages() {
             try {
-                const response = await fetch(message_api);
+                const response = await fetch(api + messageEndpoint, {
+                    headers: {
+                        Authorization:
+                            `Bearer ${token}`,
+                        },
+                })
                 const json = await response.json();
 
                 setMessages(json);
