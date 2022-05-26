@@ -1,12 +1,12 @@
 import Row from "react-bootstrap/Row";
 import SearchResults from "./SearchResults";
+import FeaturedList from "./FeaturedList";
 
 export default function Home() {
  return (
      <Row>
-        <div className="gradient">
             <SearchResults />
-        </div>
+            <FeaturedList />
      </Row>
  );
 }
