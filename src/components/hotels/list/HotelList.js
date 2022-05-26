@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { api } from "../../../constants/api.js";
+import { api, hotelEndpoint } from "../../../constants/api.js";
 import HotelCard from "./HotelCard.js";
 import Loader from "../../layout/Loader.js";
 
@@ -12,7 +12,7 @@ export default function HotelList() {
     useEffect(function() {
         async function getHotels() {
             try {
-                const response = await fetch(api);
+                const response = await fetch(api + hotelEndpoint);
                 const json = await response.json();
 
                 setHotels(json);
@@ -46,6 +46,7 @@ export default function HotelList() {
                             description={hotel.attributes.description} 
                             address={hotel.attributes.address}
                             price={hotel.attributes.price} 
+                            guests={hotel.attributes.guests}
                         />
                     </Link>
                 );
