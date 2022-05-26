@@ -15,9 +15,10 @@ export function Location ({ google, locations = [] }) {
       zoom={locations.length === 1 ? 18 : 13}
       id="map"
       containerStyle={{
-        width: "95%",
+        position: "absolute",
+        width: "90%",
         height: "60%",
-        maxWidth: "800px"
+        maxWidth: "1200px",
     }}
     >
     
