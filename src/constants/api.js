@@ -1,5 +1,11 @@
-export const base_api = "http://localhost:1337/";
+export const api = "https://boiling-journey-76156.herokuapp.com/api/";
 
-export const api = "http://localhost:1337/api/hotels";
+export const hotelEndpoint = "hotels";
 
-export const message_api = "http://localhost:1337/api/messages";
+export const messageEndpoint = "messages";
+
+export const enquiryEndpoint = "enquiries";
+
+export const authEndpoint = "auth/local";
+
+export const relations = "?populate=%2A";
