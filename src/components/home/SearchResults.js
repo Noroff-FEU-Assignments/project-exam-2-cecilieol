@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { api } from "../../constants/api";
+import { api, hotelEndpoint } from "../../constants/api";
 import axios from 'axios';
 import searchicon from "../../search-interface-symbol.png";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { Heading } from "../layout/Heading";
 
 export default function SearchResults() {
 
@@ -16,7 +17,7 @@ export default function SearchResults() {
 
     useEffect(() => {
         const loadResults = async () => {
-        const response = await axios.get(api);
+        const response = await axios.get(api + hotelEndpoint);
         setResults(response.data.data);
         }
         loadResults();
@@ -42,10 +43,12 @@ export default function SearchResults() {
 
     return (
         <div className="search-container">
+            <div className="search-box">
+            <Heading title="Find your next stay" />
             <InputGroup className={isActive ? "d-flex m-auto search-bar" : "d-flex m-auto search-bar-active"}>
                 <FormControl
                   type="search"
-                  placeholder="Search hotel names, location.."
+                  placeholder="Search hotel names.."
                   className="me-2"
                   aria-label="Search"
                   onChange={e => onChangeHandler(e.target.value)}
@@ -68,6 +71,7 @@ export default function SearchResults() {
                 </div>
             </Link>
             )}
+            </div>
         </div>
     )
 }
