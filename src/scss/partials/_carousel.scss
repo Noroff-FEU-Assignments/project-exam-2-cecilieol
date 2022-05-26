@@ -1,9 +1,11 @@
 .carousel {
     margin: 1rem auto;
 
-    .carousel-inner {
+    .carousel-item {
+        transition: none;
 
-        .carousel-item {
+        &.active {
+            transition: none;
 
             .carousel-caption {
                 background-color: rgba($almost-white, 0.5);
@@ -12,9 +14,43 @@
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 750px) {
 
     .carousel {
-        width: 50%
+
+        .carousel-indicators,
+        .carousel-control-prev,
+        .carousel-control-next {
+            z-index: 1000;
+        }
+
+        .carousel-inner {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .carousel-item {
+
+                display: block;
+                opacity: 20%;
+                margin-right: 0;
+                width: 50%;
+
+                &.active{ 
+                    opacity: 100%;
+                    z-index: 100;
+                    position: absolute;
+                    left: 25%;
+
+                    .carousel-caption {
+                        display: block;
+                    }
+                }
+
+            .carousel-caption {
+                display: none;
+            }
+        }
+    }
     }
 }

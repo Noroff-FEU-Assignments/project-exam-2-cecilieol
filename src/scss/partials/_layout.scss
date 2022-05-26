@@ -6,74 +6,22 @@ body {
     width: 90%;
 }
 
-.gradient {
-    height: 100vh;
-    background: rgb(0,82,87);
-    // padding-bottom: 15px;
-    // clip-path: 
-    //     polygon(
-    //         0% 0%,
-    //         100% 0%,
-    //         100% calc(100% - 15px),
-    //         0 100%
-    //     );
-    background: linear-gradient(180deg, rgba(0,82,87,1) 0%, rgba(255,255,255,1) 100%); 
-
-    .search-container {
-
-        .search-bar {
-
-            margin: auto;
-            border-radius: 25px;
-    
-            .search-icon {
-                width: 25px;
-            }
-        }
-
-        .search-bar-active {
-            border-radius: 25px 25px 0 0;
-
-            .search-icon {
-                width: 25px;
-            }
-        }
-    
-        a {
-    
-            .result {
-                background: $almost-white;
-                padding: 5px;
-                border-top: 1px solid $green-main;
-                display: flex;
-
-                img {
-                    width: 125px;
-                    object-fit: contain;
-                    align-self: baseline;
-                }
-            }
-
-            :hover {
-                background-color: rgb(245, 245, 245);
-            }
-
-            &:last-child {
-
-                .result {
-                    border-radius: 0 0 25px 25px;
-
-                    img {
-                        border-radius: 0 0 0 25px;
-                    }
-                }
-            }
-        }
-
-    }
+.body-container {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .details-container {
+
+    ol, ul {
+        padding-left: 0;
+        line-height: 1.8rem;
+    
+        li {
+            list-style-type: none;
+        }
+    }
 
     .desktop-flex-between {
 
@@ -101,7 +49,28 @@ body {
     }
 }
 
+footer {
+    background-color: $green-main;
+    color: $almost-white;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    margin-top: auto;
+}
+
+.view-location {
+    margin-bottom: 2rem;
+
+    div:not([class]) {
+        height: 400px;
+    }
+}
+
 @media (min-width: 992px) {
+
+    .body-container {
+        margin-top: 0;
+    }
 
     .desktop-flex-evenly {
         display: flex;

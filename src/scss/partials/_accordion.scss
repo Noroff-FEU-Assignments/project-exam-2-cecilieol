@@ -1,0 +1,38 @@
+.accordion {
+    margin-bottom: 1.5rem;
+
+    .accordion-button {
+        border: 1px solid $green-main;
+    }
+
+    .accordion-button:not(.collapsed) {
+        color: inherit;
+        background-color: inherit;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .accordion {
+        max-width: 25rem;
+
+        .accordion-item {
+            border: none;
+        }
+
+        &.modified-accordion {
+            
+            .accordion-header { 
+                display: none;
+            }
+
+            .collapse:not(.show) { 
+                display: block;
+            }
+
+            .accordion-body {
+                padding: 0;
+            }
+        }
+    }
+}

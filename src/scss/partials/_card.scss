@@ -1,9 +1,53 @@
+.featured-container {
+
+    margin-top: 2rem;
+
+    .featured-hotels {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        a {
+
+            .featured-card {
+
+                &.card {
+                    border: none;
+                    box-shadow:  0 3px 6px rgba($brown-secondary, 0.2);
+                    margin-bottom: 2rem;
+
+                    &:hover {
+                        background-color: $almost-white-hover;
+                    }
+
+                    .featured-body {
+
+                        .featured-bottom {
+                            display: flex;
+                            justify-content: space-between;
+
+                            .guests {
+                                margin-bottom: 0;
+                    
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .hotel-card {
 
     &.card {
         border: none;
-        box-shadow:  0 3px 6px rgba(0, 0, 0, 0.2);
+        box-shadow:  0 3px 6px rgba($brown-secondary, 0.2);
         margin-bottom: 2rem;
+
+        &:hover {
+            background-color: $almost-white-hover;
+        }
 
         .hotel-img {
             object-fit: contain;
@@ -37,14 +81,9 @@
                 display: flex;
                 justify-content: space-between;
 
-                .rating {
-
+                .guests {
                     margin-bottom: 0;
                     
-                    .star {
-                        width: 18px;
-                        margin-right: 4px;
-                    }
                 }
 
             }
@@ -83,6 +122,17 @@
                     margin-top: 1rem;
                 }
             }
+        }
+    }
+}
+
+@media (min-width: 600px) {
+
+    .featured-hotels {
+    
+        a {
+            width: 48%;
+            margin-right: 10px;
         }
     }
 }
@@ -148,6 +198,16 @@
                     }
                 }
             }
+        }
+    }
+}
+
+
+@media (min-width: 1110px) {
+    .featured-hotels {
+    
+        a {
+            width: 24%;
         }
     }
 }

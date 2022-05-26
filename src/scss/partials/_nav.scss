@@ -1,8 +1,8 @@
 nav {
     background-color: $green-main;
-}
 
-.navbar-light {
+&.navbar {
+    width: 100%;
 
     .logo {
 
@@ -13,9 +13,18 @@ nav {
 
     }
 
+    .navbar-toggler {
+        border: none;
+        box-shadow: none;
+    }
+
     .navbar-nav {
 
         display: flex;
+        height: 100vh;
+        line-height: 4rem;
+        text-align: center;
+        padding-top: 2rem;
 
         .nav-link {
             color: $almost-white;
@@ -26,22 +35,44 @@ nav {
                 text-decoration: underline;
             }
 
-            
+            &.no-style {
+                text-decoration: none;
+            }
+        }
+
+        .navbar-nav-admin {
+            display: flex;
+            flex-direction: column;
+            line-height: 4rem;
+            text-align: center;
+            padding-top: 0;
         }
     }
+}
 }
 
 @media (min-width: 992px) {
 
-    .navbar-light {
-    
+nav {
+
+    &.navbar {
+        position: relative;
+        margin-top: 0;
+        
         .navbar-nav {
-    
+            height: auto;
+            padding-top: 0;
+            
             .nav-link {
-                margin: 0 20px;
-    
+                margin: 0 15px;
                 
+            }
+
+            .navbar-nav-admin {
+                height: auto;
+                flex-direction: row;
             }
         }
     }
+}
 }

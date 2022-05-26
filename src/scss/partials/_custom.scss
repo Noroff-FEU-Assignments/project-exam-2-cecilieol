@@ -6,7 +6,8 @@ $orange-main-hover: #a14b00;
 $green-secondary: #001B1C;
 $brown-secondary: #1C0D00;
 $almost-white: #FFFFFC;
-$almost-white-hover: #e1e1e1;
+$almost-white-hover: #e9e9e9;
+$green-success: #198700;
 $red-danger: #bb1a1a;
 $red-danger-hover: #981111;
 
@@ -20,6 +21,11 @@ $link-hover-color: $brown-secondary;
 $font-heading: 'Ubuntu', sans-serif;
 $font-text: 'Quicksand', sans-serif;
 
+$h3-font-size: 22px;
+
 // Decoration
 $link-decoration: none;
 $link-hover-decoration: none;
+
+// Z-index
+$zindex-modal: 100000;

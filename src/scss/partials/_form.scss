@@ -1,13 +1,15 @@
+:focus {
+    border-color: $green-main;
+}
 
 form {
-    max-width: 25rem;
-    margin-right: auto;
-    margin-left: auto;
+    width: 100%;
+    margin: 0 auto 2rem auto;
     padding: 1rem;
     border-radius: 25px;
     background-color: $green-main;
     color: $almost-white;
-    box-shadow:  0 3px 6px ($green-secondary);
+    box-shadow:  0 3px 6px ($brown-secondary);
     align-self: baseline;
 
     &.search-box {
@@ -17,7 +19,7 @@ form {
     &.modal-content {
         border-radius: 25px;
         background-color: $green-main;
-        box-shadow:  0 3px 6px ($green-secondary);
+        box-shadow:  0 3px 6px ($brown-secondary);
     }
 
     .mb-3 {
@@ -26,6 +28,11 @@ form {
         .form-select {
             border-radius: 25px;
         }
+
+        .input-group-text {
+            border-radius: 25px 0 0 25px;
+        }
+
     }
 
     .form-inline {
@@ -42,7 +49,7 @@ form {
     border-radius: 25px;
     background-color: $almost-white;
     border: none;
-    box-shadow:  0 3px 6px rgba(0, 0, 0, 0.2);
+    box-shadow:  0 3px 6px rgba($brown-secondary, 0.2);
 
     .form-control {
         border: none;
@@ -57,6 +64,7 @@ form {
 @media (min-width: 992px) {
 
     form {
+        max-width: 25rem;
 
         &.search-box {
             margin-right: 0;

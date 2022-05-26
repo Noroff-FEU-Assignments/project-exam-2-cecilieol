@@ -9,7 +9,20 @@ p, label, li, button, span {
 
 h1, 
 .h1 {
-    padding: 1rem 0;
+    padding: 1rem 0 0.5rem 0;
+    text-align: center;
+
+    &.h1-align-left {
+        text-align: left;
+    }
+}
+
+.h2-details {
+    padding: 1rem 0 0.5rem 0;
+}
+
+h3 {
+    font-size: $h3-font-size;
 }
 
 a {
@@ -21,13 +34,30 @@ a {
     font-weight: 600;
 }
 
-.success {
-    background-color: green;
+.success-container {
+    background-color: $green-success;
+    color: $almost-white;
     padding: 1rem;
     text-align: center;
-    margin: auto;
+    margin: 1rem auto;
+    border-radius: 25px;
+    box-shadow: 0 3px 6px rgba($brown-secondary, 0.2);
 }
 
-.text-danger {
-    color: red;
+.error-container {
+    background-color: $red-danger;
+    color: $almost-white;
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem auto;
+    border-radius: 25px;
+    box-shadow: 0 3px 6px rgba($brown-secondary, 0.2);
+}
+
+@media (min-width: 992px) {
+
+    .success-container,
+    .error-container {
+        max-width: 25rem;
+    }
 }
