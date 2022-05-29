@@ -4,8 +4,8 @@ import ContactForm from "./ContactForm";
 export default function Contact() {
  return (
      <>
-     <Heading title="Contact" />
-     <ContactForm />
+        <Heading title="Contact" />
+        <ContactForm />
      </>
  );
 }
