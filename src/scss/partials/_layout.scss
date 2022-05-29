@@ -6,94 +6,51 @@ body {
     width: 90%;
 }
 
-.body-container {
-    min-height: 75vh;
-    display: flex;
-    flex-direction: column;
-}
+.desktop-flex-between {
 
-.details-container {
-
-    ol, ul {
-        padding-left: 0;
-        line-height: 1.8rem;
-    
-        li {
-            list-style-type: none;
-        }
+    .page-left {
+        width: 100%;
     }
 
-    .desktop-flex-between {
+    .page-right {
 
-        .page-left {
+        &.card {
             width: 100%;
-        }
-
-        .page-right {
-
-            &.card {
-                width: 100%;
-                border-radius: 25px;
-                background-color: $green-main;
-                color: $almost-white;
-                padding: 1.5rem;
-                margin: 1rem 0;
-                align-self: baseline;
-        
-                .card-inline {
-                    display: flex;
-                    justify-content: space-between;
-                }
+            border-radius: 25px;
+            background-color: $green-main;
+            color: $almost-white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            align-self: baseline;
+    
+            .card-inline {
+                display: flex;
+                justify-content: space-between;
             }
         }
     }
 }
 
-footer {
-    background-color: $green-main;
-    color: $almost-white;
-    width: 100%;
-    text-align: center;
-    padding: 30px;
-    margin-top: auto;
-}
-
-.view-location {
-    margin-bottom: 2rem;
-
-    div:not([class]) {
-        height: 400px;
-    }
-}
 
 @media (min-width: 992px) {
-
-    .body-container {
-        margin-top: 0;
-    }
 
     .desktop-flex-evenly {
         display: flex;
         justify-content: space-evenly;
     }
 
-    .details-container {
-        max-width: 1200px;
-        margin: auto;
+    .desktop-flex-between {
+        display: flex;
+        justify-content: space-between;
 
-        .desktop-flex-between {
-            display: flex;
-            justify-content: space-between;
+        .page-left {
+            width: 65%;
+        }
 
-            .page-left {
-                width: 65%;
-            }
+        .page-right {
 
-            .page-right {
-
-                &.card {
-                    width: 30%;
-                }
+            &.card {
+                width: 30%;
             }
         }
     }
