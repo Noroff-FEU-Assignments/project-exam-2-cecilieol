@@ -1,0 +1,12 @@
+footer {
+    background-color: $green-main;
+    color: $almost-white;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    margin-top: auto;
+
+    &.admin {
+        background-color: $orange-main;
+    }
+}
