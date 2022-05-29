@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Login Details
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+E-mail: admin@admin.com
+Password: Admin1234?
 
-## Available Scripts
+# Project Exam 2
 
-In the project directory, you can run:
+There are two options with this Project Exam.
+You need to only choose one and please follow the deliveries carefully.
 
-### `npm start`
+## Goal
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To take the skills learned over the last two years and take on an extensive project where the finished product should reflect the candidate's general development capabilities, in addition to visual and technical skills.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Brief
 
-### `npm test`
+For this assignment you have the choice between getting a real world client that you will manage and build a website for, or a case study to make a hotel booking website.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Whatever project you choose, the final submission must have the following:
 
-### `npm run build`
+- A Gantt chart planning the project
+- A style guide
+- An Adobe XD prototype
+- Use a CSS Pre-processor and BEM if not using CSS Modules, Styled Components, etc
+- Use a React.js or Next.js
+- You can use regular JS or TypeScript
+- Please use create-react-app or create-next-app to generate a skeleton project for yourself
+- A fully working website that fulfils the brief
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Option 2: Hotel Booking Website
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A local tourism agency in Bergen is launching a new website called ‘Holidaze’ for visitors to the area to be able to find hotels, B&Bs and guesthouses, and for the accommodation owners to receive enquiries.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The project requires you to create the visitor side of the website where users can search accommodation and make enquiries, as well as the administration side where properties can be added and enquiries managed.
 
-### `npm run eject`
+You will need to create an API to store the data for the establishments, enquiries and contact submissions. You can choose to use WordPress or Strapi as a Headless CMS, but it is very important that the API is deployed and publicly available. Please do not submit any files for your API. Only submit the website you have created.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Requirements for the Website
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Visitor Side
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Homepage
+- Search bar typeahead (auto dropdown with hotel names that match what has been typed)
+- A results page with all hotels
+- The hotel specific page which displays all details about the hotel
+- An enquiry page either modal or separate page
+- A contact page (different to enquiry page) which goes to the admin for Holidaze
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Admin side
 
-## Learn More
+- Create a login section that makes use of JWT tokens
+- List of enquiries and new enquiries appear when user submits the form on the enquiry page
+- List of messages from contact form
+- The admin can create a new establishment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Recommended Process
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Week 1 and 2: Planning and Design
+Week 3 to 6: Coding
+Week 7: Bug Fixing
 
-### Code Splitting
+### Level 1 Process
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Start by planning out the project.
+- Next begin your research of likely users and browse competitor websites for ideas.
+- Create a style guide
+- Build an Adobe XD prototype (or you can use Sketch or Figma).
+- Start coding.
+- Once you’ve finished development, start looking for bugs and ensure the site functions well on all viewports. Test the code on different devices. Because your API is public, the code shouldn’t rely on a local API.
+- Refactor your code.
+- Ask another student to look over your code and ask them if they can see how it might be better implemented. This is important to get an outside view on your code. Please attach this feedback to your report.
+- Add the login details for your admin side at the top of this README.md file so that it's easy for the marker to spot.
 
-### Analyzing the Bundle Size
+### Submission
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+End of week 7: Report with link to website or a Github link and feedback from code review, and all files in a compressed ZIP. Login details added to the README.md.
 
-### Making a Progressive Web App
+### Resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Report template included in the repo.
