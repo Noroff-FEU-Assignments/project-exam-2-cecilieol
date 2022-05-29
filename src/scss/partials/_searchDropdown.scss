@@ -1,71 +1,75 @@
+.search-container {
+    background-color: $green-main;
+    height: 125px;
+    margin-top: -1px;
+    margin-bottom: 8rem;
+    padding: 1rem;
+    z-index: 1000;
+    overflow: visible;
 
-    .search-container {
-        background-color: $green-main;
-        height: 100px;
-        margin-top: -1px;
-        margin-bottom: 8rem;
-        padding: 1rem;
-        z-index: 10000;
-        overflow: visible;
+    &.admin {
+        background-color: $orange-main;
+    }
 
-        .search-box {
+    .search-box {
+        background-color: $orange-main;
+        padding: 2rem;
+        border-radius: 25px;
 
-            background-color: $orange-main;
-            padding: 2rem;
+        &.admin {
+            background-color: $green-main;
+        }
+
+        h1 {
+            color: $almost-white;
+        }
+
+        .search-bar {
+            margin: auto;
             border-radius: 25px;
-
-            h1 {
-                color: $almost-white;
-            }
-
-            .search-bar {
-
-                margin: auto;
-                border-radius: 25px;
     
-                .search-icon {
-                    width: 25px;
-                }
-            }
-
-            .search-bar-active {
-                border-radius: 25px 25px 0 0;
-
-                .search-icon {
-                    width: 25px;
-                }
+            .search-icon {
+                width: 25px;
             }
         }
+
+        .search-bar-active {
+            border-radius: 25px 25px 0 0;
+
+            .search-icon {
+                width: 25px;
+            }
+        }
+    }
     
-        a {
+    a {
     
+        .result {
+            background: $almost-white;
+            padding: 5px;
+            border-top: 1px solid $green-main;
+            display: flex;
+
+            img {
+                width: 125px;
+                object-fit: contain;
+                align-self: baseline;
+            }
+        }
+
+        :hover {
+            background-color: $almost-white-hover;
+        }
+
+        &:last-child {
+
             .result {
-                background: $almost-white;
-                padding: 5px;
-                border-top: 1px solid $green-main;
-                display: flex;
+                border-radius: 0 0 25px 25px;
 
                 img {
-                    width: 125px;
-                    object-fit: contain;
-                    align-self: baseline;
-                }
-            }
-
-            :hover {
-                background-color: $almost-white-hover;
-            }
-
-            &:last-child {
-
-                .result {
-                    border-radius: 0 0 25px 25px;
-
-                    img {
-                        border-radius: 0 0 0 25px;
-                    }
+                    border-radius: 0 0 0 25px;
                 }
             }
         }
-
     }
+}
