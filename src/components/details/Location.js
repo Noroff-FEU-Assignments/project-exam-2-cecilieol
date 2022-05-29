@@ -17,7 +17,7 @@ export function Location ({ google, locations = [] }) {
       containerStyle={{
         position: "absolute",
         width: "90%",
-        height: "60%",
+        height: "auto",
         maxWidth: "1200px",
     }}
     >
