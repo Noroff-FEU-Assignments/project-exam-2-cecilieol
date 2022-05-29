@@ -9,7 +9,7 @@ p, label, li, button, span {
 
 h1, 
 .h1 {
-    padding: 1rem 0 0.5rem 0;
+    padding: 1.5rem 0 1.5rem 0;
     text-align: center;
 
     &.h1-align-left {
@@ -30,34 +30,12 @@ a {
     text-decoration: none;
 }
 
-.bold {
+.bold,
+.text-danger,
+.text-danger-admin {
     font-weight: 600;
 }
 
-.success-container {
-    background-color: $green-success;
-    color: $almost-white;
-    padding: 1rem;
-    text-align: center;
-    margin: 1rem auto;
-    border-radius: 25px;
-    box-shadow: 0 3px 6px rgba($brown-secondary, 0.2);
-}
-
-.error-container {
-    background-color: $red-danger;
-    color: $almost-white;
-    padding: 1rem;
-    text-align: center;
-    margin: 1rem auto;
-    border-radius: 25px;
-    box-shadow: 0 3px 6px rgba($brown-secondary, 0.2);
-}
-
-@media (min-width: 992px) {
-
-    .success-container,
-    .error-container {
-        max-width: 25rem;
-    }
+.text-danger-admin {
+    color: $brown-secondary;
 }
