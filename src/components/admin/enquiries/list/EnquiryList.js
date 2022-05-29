@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { api, enquiryEndpoint, relations } from "../../../../constants/api";
 import EnquiryCard from "./EnquiryCard";
 import Loader from "../../../layout/Loader";
-import { retrieveToken } from "../../../auth/token";
+import { retrieveToken } from "../../../../helpers/auth/token";
 
 export default function EnquiryList() {
     const [enquiries, setEnquiries] = useState([]);
@@ -11,7 +11,7 @@ export default function EnquiryList() {
 
     useEffect(function() {
 
-        const token = retrieveToken();
+    const token = retrieveToken();
 
         async function getEnquiries() {
             try {
@@ -34,13 +34,10 @@ export default function EnquiryList() {
         getEnquiries();
     }, []);
 
-    if (loader) {
-		return <Loader />;
-	}
 
-	if (error) {
-		return <div>An error occured: {error}</div>;
-	}
+    if (loader) return <Loader />;
+
+	if (error) return <div>An error occured: {error}</div>;
 
     return (
         <div className="enquiries-list">
