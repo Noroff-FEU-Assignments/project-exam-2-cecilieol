@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-// import star from "../../../star.png";
 
 export default function HotelCard({ name, description, address, price, guests, image }) {
 
