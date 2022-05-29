@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { api, messageEndpoint } from "../../../../constants/api";
 import MessageCard from "./MessageCard";
 import Loader from "../../../layout/Loader";
-import { retrieveToken } from "../../../auth/token";
+import { retrieveToken } from "../../../../helpers/auth/token";
 
 export default function MessageList() {
     const [messages, setMessages] = useState([]);
@@ -35,13 +35,9 @@ export default function MessageList() {
         getMessages();
     }, []);
 
-    if (loader) {
-		return <Loader />;
-	}
+    if (loader) return <Loader />;
 
-	if (error) {
-		return <div>An error occured: {error}</div>;
-	}
+	if (error) return <div>An error occured: {error}</div>;
 
     return (
         <div className="messages-list">
