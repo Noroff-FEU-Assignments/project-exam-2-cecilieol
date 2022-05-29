@@ -1,37 +1,23 @@
-.featured-container {
+.featured-card {
 
-    margin-top: 2rem;
+    &.card {
+        border: none;
+        box-shadow:  0 3px 6px rgba($brown-secondary, 0.2);
+        margin-bottom: 2rem;
 
-    .featured-hotels {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        &:hover {
+            background-color: $almost-white-hover;
+        }
 
-        a {
+        .featured-body {
 
-            .featured-card {
+            .featured-bottom {
+                display: flex;
+                justify-content: space-between;
 
-                &.card {
-                    border: none;
-                    box-shadow:  0 3px 6px rgba($brown-secondary, 0.2);
-                    margin-bottom: 2rem;
-
-                    &:hover {
-                        background-color: $almost-white-hover;
-                    }
-
-                    .featured-body {
-
-                        .featured-bottom {
-                            display: flex;
-                            justify-content: space-between;
-
-                            .guests {
-                                margin-bottom: 0;
+                .guests {
+                    margin-bottom: 0;
                     
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -126,17 +112,6 @@
     }
 }
 
-@media (min-width: 600px) {
-
-    .featured-hotels {
-    
-        a {
-            width: 48%;
-            margin-right: 10px;
-        }
-    }
-}
-
 @media (min-width: 992px) {
 
     .hotel-card {
@@ -198,16 +173,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-
-@media (min-width: 1110px) {
-    .featured-hotels {
-    
-        a {
-            width: 24%;
         }
     }
 }
