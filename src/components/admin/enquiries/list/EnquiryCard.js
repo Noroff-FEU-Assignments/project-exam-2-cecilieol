@@ -36,7 +36,7 @@ export default function EnquiryCard({ hotel, firstname, lastname, email, guests,
                     </div>
                     </div>
                     <div className="card-bottom">
-                        <Button className="primary" onClick={() => window.location = `mailto:${email}`}>Respond to enquiry</Button>
+                        <Button className="admin" onClick={() => window.location = `mailto:${email}`}>Respond to enquiry</Button>
                         <Button className="danger">Delete request</Button>
                     </div>
                 </Card.Body>
