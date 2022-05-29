@@ -26,13 +26,9 @@ export default function HotelList() {
         getHotels();
     }, []);
 
-    if (loader) {
-		return <Loader />;
-	}
+    if (loader) return <Loader />;
 
-	if (error) {
-		return <div>An error occured: {error}</div>;
-	}
+	if (error) return <div>An error occured: {error}</div>;
 
     return (
         <div className="hotels">
