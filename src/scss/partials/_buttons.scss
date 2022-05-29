@@ -30,6 +30,19 @@ button {
         }
     }
 
+    &.admin {
+        background-color: $green-main;
+        border: none;
+        border-radius: 25px;
+        width: 100%;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $green-main-hover;
+        }
+    }
+
     &.danger {
         background-color: $red-danger;
         border: none;
