@@ -21,7 +21,7 @@ export default function MessageCard({ firstname, lastname, email, subject, messa
                     <Card.Text>Message: {message}</Card.Text>
                     </div>
                     <div className="card-bottom">
-                    <Button className="primary" onClick={() => window.location = `mailto:${email}`}>Respond to message</Button>
+                    <Button className="admin" onClick={() => window.location = `mailto:${email}`}>Respond to message</Button>
                     <Button className="danger">Delete request</Button>
                     </div>
                 </Card.Body>
