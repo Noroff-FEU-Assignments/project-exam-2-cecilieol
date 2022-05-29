@@ -5,9 +5,8 @@ export default function Login() {
 
  return (
      <>
-     <Heading title="Login" />
-     <LoginForm />
-
+        <Heading title="Login" />
+        <LoginForm />
      </>
  );
 }
