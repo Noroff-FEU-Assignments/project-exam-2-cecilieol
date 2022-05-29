@@ -59,7 +59,7 @@ export default function ContactForm() {
         })
         .catch(error => { 
             console.log(error.response);
-            setErrorMessage(error.response.statusText);
+            setErrorMessage(error.response.data.error.message);
         });
     }
 
