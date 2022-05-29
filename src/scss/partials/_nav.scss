@@ -1,78 +1,82 @@
 nav {
     background-color: $green-main;
 
-&.navbar {
-    width: 100%;
-
-    .logo {
-
-        img {
-            width: 200px;
-            margin: 10px;
-        }
-
+    &.admin {
+        background-color: $orange-main;
     }
 
-    .navbar-toggler {
-        border: none;
-        box-shadow: none;
-    }
+    &.navbar {
+        width: 100%;
+        position: fixed;
+        z-index: 10000;
 
-    .navbar-nav {
+        .logo {
 
-        display: flex;
-        height: 100vh;
-        line-height: 4rem;
-        text-align: center;
-        padding-top: 2rem;
-
-        .nav-link {
-            color: $almost-white;
-            font-size: 20px;
-            margin: 0 20px;
-
-            &.active {
-                text-decoration: underline;
+            img {
+                width: 200px;
+                margin: 10px;
             }
 
-            &.no-style {
-                text-decoration: none;
-            }
         }
 
-        .navbar-nav-admin {
+        .navbar-toggler {
+            border: none;
+            box-shadow: none;
+        }
+
+        .navbar-nav {
             display: flex;
-            flex-direction: column;
+            height: 100vh;
             line-height: 4rem;
             text-align: center;
-            padding-top: 0;
+            padding-top: 2rem;
+
+            .nav-link {
+                color: $almost-white;
+                font-size: 20px;
+                margin: 0 20px;
+
+                &.active {
+                    text-decoration: underline;
+                }
+
+                &.no-style {
+                    text-decoration: none;
+                }
+            }
+
+            .navbar-nav-admin {
+                display: flex;
+                flex-direction: column;
+                line-height: 4rem;
+                text-align: center;
+                padding-top: 0;
+            }
         }
     }
-}
 }
 
 @media (min-width: 992px) {
 
-nav {
+    nav {
 
-    &.navbar {
-        position: relative;
-        margin-top: 0;
-        
-        .navbar-nav {
-            height: auto;
-            padding-top: 0;
+        &.navbar {
+            position: relative;
+            margin-top: 0;
             
-            .nav-link {
-                margin: 0 15px;
-                
-            }
-
-            .navbar-nav-admin {
+            .navbar-nav {
                 height: auto;
-                flex-direction: row;
+                padding-top: 0;
+                
+                .nav-link {
+                    margin: 0 15px;
+                }
+
+                .navbar-nav-admin {
+                    height: auto;
+                    flex-direction: row;
+                }
             }
         }
     }
-}
 }
