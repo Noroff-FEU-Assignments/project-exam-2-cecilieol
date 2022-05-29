@@ -9,6 +9,11 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 
+const currentDate = new Date();
+currentDate.setHours(0, 0, 0, 0)
+
+const nextDay = new Date(currentDate.getTime() + 86400000);
+
 const schema = yup.object().shape({
 	first_name: yup
 		.string()
@@ -16,25 +21,29 @@ const schema = yup.object().shape({
 		.min(2, "First name must be at least 2 characters"),
 	last_name: yup
 		.string()
-		.required("Please enter your first name")
+		.required("Please enter your last name")
 		.min(2, "Last name must be at least 2 characters"),
 	email: yup
 		.string()
 		.required("Please enter you email address")
-		.email('Invalid email format'),
+		.email("Invalid email format"),
 	guests: yup
 		.number()
-		.required("Please choose number of guests"),
+        .typeError("Please enter a number")
+		.required("Please choose number of guests")
+        .positive("Invalid number"),
 	checkin: yup
 		.date()
-		.required("Please choose a check-in date"),
+        .typeError("Please enter a date")
+		.required("Please choose a check-in date")
+        .min(currentDate, "Date cannot be in the past"),
 	checkout: yup
 		.date()
+        .typeError("Please enter a date")
 		.required("Please choose a check-out date")
-		.min(yup.ref('checkin'), "Check-out date must be after check-in date"),
+		.min(nextDay, "Check-out date must be after check-in date"),
 	message: yup
 		.string(),
-		
   });
 
 
@@ -42,6 +51,7 @@ export default function EnquiryModal() {
 
 	const [show, setShow] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -74,15 +84,13 @@ export default function EnquiryModal() {
         )
 
         .then(response => {
-            console.log('Well done!');
-            console.log('User profile', response.data);
-
             setSubmitted(true);
             e.target.reset();
 
         })
         .catch(error => { 
-            console.log('An error occurred:', error.response);
+            console.log(error.response);
+            setErrorMessage(error.response.data.error.message);
         });
     }
 
@@ -96,7 +104,8 @@ export default function EnquiryModal() {
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={handleSubmit(onSubmit)}>
-            {submitted && <div className="success">Your enquiry has been sent</div>}
+            {submitted && <div className="success-container">Your enquiry has been sent</div>}
+            {errorMessage && <div className="error-container">{errorMessage}</div>}
 
               <Form.Group className="mb-3 form-inline inline-first">
                     <Form.Label>First name</Form.Label>
