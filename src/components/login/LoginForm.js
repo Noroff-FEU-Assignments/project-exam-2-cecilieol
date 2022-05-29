@@ -3,8 +3,7 @@ import Button from "react-bootstrap/Button";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { saveToken } from "../auth/token";
-import { rememberUser } from "../auth/user";
+import { saveToken } from "../../helpers/auth/token";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { api, authEndpoint } from "../../constants/api";
@@ -35,6 +34,7 @@ export default function LoginForm() {
         resolver: yupResolver(schema)
     });
 
+    // eslint-disable-next-line 
     const [auth, setAuth] = useContext(AuthContext);
 
     function onSubmit(data) {
@@ -47,16 +47,14 @@ export default function LoginForm() {
 
         .then(response => {
             saveToken(response.data.jwt);
-            rememberUser(response.data.user);
             setAuth(response.data);
             navigate("/");
 
         })
         .catch(error => { 
             console.log(error.response);
-            setLoginError(error.response.statusText);
+            setLoginError(error.response.data.error.message);
         });
-
     }
 
     return( 
