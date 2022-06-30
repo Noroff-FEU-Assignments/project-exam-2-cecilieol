@@ -1,8 +1,3 @@
-# Login Details
-
-- E-mail: admin@admin.com
-- Password: Admin1234?
-
 # Holidaze - Project Exam 2
 
 ![Holidaze](https://user-images.githubusercontent.com/71260714/172364052-eeed8e3c-9898-4a61-84ce-77ab906090d4.jpg)
